@@ -9,7 +9,6 @@ AI-powered DeFi swap assistant that explains trades in simple language.
 - See risks like slippage and gas costs
 - Execute swaps with 1inch API
 
-Built for ETHGlobal Unite DeFi hackathon.
 
 ## Tech Stack
 
