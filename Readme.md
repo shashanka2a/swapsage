@@ -43,7 +43,7 @@ NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_id
 ## Features
 
 - [x] Wallet connection
-- [] Token selection
+- [ ] Token selection
 - [ ] AI swap explanations  
 - [ ] Risk analysis
 - [ ] Cross-chain swaps
