@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid lg:grid-cols-3 gap-6">
+  <section class="lg:col-span-2 bg-white rounded-2xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Swap</h2>
+    <div class="grid sm:grid-cols-2 gap-3">
+      <div>
+        <label class="block text-sm text-gray-600 mb-1">From</label>
+        <select id="src" class="w-full border rounded-xl px-3 py-2">
+          <!-- ETH (native) -->
+          <option value="0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" data-decimals="18">ETH</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm text-gray-600 mb-1">To</label>
+        <select id="dst" class="w-full border rounded-xl px-3 py-2">
+          <!-- USDC -->
+          <option value="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" data-decimals="6">USDC</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-3">
+      <label class="block text-sm text-gray-600 mb-1">Amount</label>
+      <input id="amount" type="number" step="any" placeholder="1.0" class="w-full border rounded-xl px-3 py-2">
+    </div>
+    <div class="mt-4 flex gap-3">
+      <button onclick="fetchQuote()" class="px-4 py-2 rounded-2xl font-medium shadow bg-indigo-600 text-white hover:opacity-90 transition">Find Best Route</button>
+      <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">Chain: Ethereum</span>
+    </div>
+  </section>
+
+  <aside class="bg-white rounded-2xl shadow p-6">
+    <h3 class="font-semibold mb-2">Risk</h3>
+    <div id="risk" class="text-sm text-gray-700">—</div>
+    <h3 class="font-semibold mt-4 mb-2">Explanation</h3>
+    <div id="explain" class="text-sm text-gray-700">—</div>
+  </aside>
+</div>
+
+<section class="bg-white rounded-2xl shadow p-6 mt-6">
+  <h3 class="font-semibold mb-2">Route</h3>
+  <pre id="route" class="bg-gray-900 text-gray-100 p-3 rounded-xl text-xs overflow-auto min-h-[160px]">—</pre>
+</section>
+{% endblock %}
