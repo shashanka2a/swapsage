@@ -19,7 +19,7 @@ AI-powered DeFi swap assistant that explains trades in simple language.
 
 ## Architecture & Data Flow
 
-![SwqapSAge Architecture Flowchart](SwapSage_FlowChart.png)
+![SwapSage Architecture Flowchart](SwapSage_Flowchart.png)
 
 ## Setup
 
