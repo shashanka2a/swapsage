@@ -16,6 +16,11 @@ AI-powered DeFi swap assistant that explains trades in simple language.
 **Backend:** Django + OpenAI API  
 **APIs:** 1inch aggregation, price feeds, wallet balances
 
+
+## Architecture & Data Flow
+
+![SwqapSAge Architecture Flowchart](SwapSage_FlowChart.png)
+
 ## Setup
 
 ### Frontend
