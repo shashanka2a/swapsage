@@ -5,30 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SwapSage</title>
 
-  <!-- Tailwind via CDN (good for dev; consider self-hosting for prod) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: {} }
-    };
-  </script>
+<!-- Tailwind via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
   <header class="border-b bg-white">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-bold">SwapSage</a>
-      <nav class="flex items-center gap-4 text-sm">
+      <nav class="flex items-center gap-3 text-sm">
         <a href="/" class="hover:text-indigo-600">Home</a>
         <a href="/swap/" class="hover:text-indigo-600">Swap</a>
-        <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">
-          Powered by 1inch
-        </span>
+
+        <!-- Connected address chip -->
+        <span id="wc-address" class="hidden md:inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100"></span>
+
+        <!-- Connect / Disconnect -->
+        <button id="wc-connect" class="px-3 py-1 rounded-xl bg-indigo-600 text-white">Connect</button>
+        <button id="wc-disconnect" class="px-3 py-1 rounded-xl bg-gray-200 hidden">Disconnect</button>
       </nav>
     </div>
   </header>
+
   <main class="max-w-6xl mx-auto px-4 py-8">
     {% block content %}{% endblock %}
   </main>
+
+  <!-- WalletConnect Ethereum Provider (UMD) -->
+  <script src="https://unpkg.com/@walletconnect/ethereum-provider@2.11.2/dist/umd/index.min.js"></script>
+
+  <!-- Expose WC Project ID to JS -->
+  <script>
+    window.WALLETCONNECT_PROJECT_ID = "{{ walletconnect_project_id|default:'' }}";
+  </script>
+
+  <!-- App scripts -->
+  <script src="/static/js/wallet.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
 </html>
