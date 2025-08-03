@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid md:grid-cols-2 gap-6">
+  <section class="bg-white rounded-2xl shadow p-6">
+    <h1 class="text-2xl font-semibold mb-2">Kayak + Duolingo for DeFi</h1>
+    <p class="text-gray-600 mb-4">Find the best cross-chain token swaps and understand them in plain English.</p>
+    <div class="flex gap-3">
+      <a href="/swap/" class="px-4 py-2 rounded-2xl font-medium shadow bg-indigo-600 text-white hover:opacity-90 transition">Open Swap</a>
+      <a href="#" class="px-4 py-2 rounded-2xl font-medium shadow bg-gray-900 text-white hover:opacity-90 transition">Demo Video (soon)</a>
+    </div>
+  </section>
+
+  <section class="bg-white rounded-2xl shadow p-6">
+    <h2 class="font-semibold mb-3">Why SwapSage?</h2>
+    <ul class="grid sm:grid-cols-2 gap-3 text-sm">
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">AI explanations</li>
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">Risk analysis</li>
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">1inch aggregation</li>
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">Gas optimization</li>
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">Mobile-ready UI</li>
+      <li class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-gray-100">Transparent routes</li>
+    </ul>
+  </section>
+</div>
+
+{% if tokens %}
+<section class="mt-8 bg-white rounded-2xl shadow p-6">
+  <h3 class="font-semibold mb-3">Popular Tokens ({{ tokens|length }})</h3>
+  <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+    {% for addr, t in tokens.items|slice:":12" %}
+      <div class="p-3 bg-gray-50 rounded-xl">
+        <div class="font-medium">{{ t.symbol }}</div>
+        <div class="text-xs text-gray-600 truncate">{{ addr }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<div class="mt-8 text-sm text-gray-600">Add your ONEINCH_API_KEY in .env to load token list.</div>
+{% endif %}
+{% endblock %}
